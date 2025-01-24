@@ -7,4 +7,4 @@ add_library(${PROJECT_NAME} STATIC ${sources} ${headers})
 target_include_directories(${PROJECT_NAME} PUBLIC ./include)
 target_link_libraries(${PROJECT_NAME} PUBLIC Vulkan::Vulkan)
 
-target_link_libraries(${PROJECT_NAME} PUBLIC spdlog)
+target_link_libraries(${PROJECT_NAME} PUBLIC spdlog glfw)
