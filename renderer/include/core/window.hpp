@@ -18,7 +18,7 @@ public:
     bool shouldClose() const { return glfwWindowShouldClose(window_); }
     void pollEvents() const { glfwPollEvents(); }
 
-    auto getWindow() const { return window_; }
+    auto window() const { return window_; }
 
 private:
     GLFWwindow* window_;

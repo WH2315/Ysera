@@ -1,0 +1,33 @@
+#pragma once
+
+#include <vulkan/vulkan.hpp>
+
+namespace Ysera {
+
+class Manager;
+class Context final {
+public:
+    ~Context() = default;
+
+    static void init();
+    static Context& context() { return *instance_; }
+    static void quit();
+
+    void initialize(const Manager& manager);
+    void destroy();
+
+public:
+    vk::Instance instance;
+    vk::SurfaceKHR surface;
+
+private:
+    void createInstance();
+    void createSurface(const Manager& manager);
+
+private:
+    Context() = default;
+
+    static std::unique_ptr<Context> instance_;
+};
+
+} // namespace Ysera
