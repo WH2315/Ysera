@@ -1,6 +1,7 @@
 #pragma once
 
 #include "basic/device.hpp"
+#include "basic/swapchain.hpp"
 
 namespace Ysera {
 
@@ -20,6 +21,7 @@ public:
     vk::Instance instance;
     vk::SurfaceKHR surface;
     std::unique_ptr<Device> device;
+    std::unique_ptr<Swapchain> swapchain;
 
 private:
     void createInstance();
