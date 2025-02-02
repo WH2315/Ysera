@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vulkan/vulkan.hpp>
+#include "basic/device.hpp"
 
 namespace Ysera {
 
@@ -19,6 +19,7 @@ public:
 public:
     vk::Instance instance;
     vk::SurfaceKHR surface;
+    std::unique_ptr<Device> device;
 
 private:
     void createInstance();

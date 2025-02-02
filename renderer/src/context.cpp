@@ -17,10 +17,12 @@ void Context::quit() { instance_.reset(); }
 void Context::initialize(const Manager& manager) {
     createInstance();
     createSurface(manager);
+    device = std::make_unique<Device>();
     LOGI("Vulkan Context Initialized!")
 }
 
 void Context::destroy() {
+    device.reset();
     instance.destroySurfaceKHR(surface);
     instance.destroy();
     LOGI("Vulkan Context Destroyed!")
@@ -54,7 +56,7 @@ void Context::createInstance() {
     }
     for (const auto& [ep, success] : requiredExtensions) {
         if (!success) {
-            LOGE("unsupported extension: {}", ep)
+            LOGE("unsupported instance extension: {}", ep)
         }
     }
     ins_ci.setPEnabledExtensionNames(extensions);
@@ -68,7 +70,7 @@ void Context::createInstance() {
         if (it != lps.end()) {
             ins_ci.setPEnabledLayerNames(layer);
         } else {
-            LOGE("Validation layer not support!")
+            LOGE("Instance validation layer not support!")
         }
     }
 
