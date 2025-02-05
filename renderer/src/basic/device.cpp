@@ -19,7 +19,7 @@ Device::Device() {
         LOGE("No suitable physical device found!")
     } else {
         auto properties = physical_device.getProperties();
-        LOGI("Selected GPU: {}", std::string(properties.deviceName))
+        LOGI("Selected GPU: {}", static_cast<std::string>(properties.deviceName.data()))
         if (g_config.debug) {
             LOGD("  GPU Driver Version: {}.{}.{}", VK_VERSION_MAJOR(properties.driverVersion), VK_VERSION_MINOR(properties.driverVersion), VK_VERSION_PATCH(properties.driverVersion))
             LOGD("  GPU API Version: {}.{}.{}", VK_VERSION_MAJOR(properties.apiVersion), VK_VERSION_MINOR(properties.apiVersion), VK_VERSION_PATCH(properties.apiVersion))
