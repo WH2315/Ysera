@@ -1,10 +1,11 @@
 #pragma once
 
+#include "dllexport.hpp"
 #include <vulkan/vulkan.hpp>
 
 namespace Ysera {
 
-class Swapchain {
+class YSERA_API Swapchain {
 public:
     Swapchain();
     ~Swapchain();

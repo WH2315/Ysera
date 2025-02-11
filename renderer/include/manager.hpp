@@ -1,11 +1,12 @@
 #pragma once
 
+#include "dllexport.hpp"
 #include "base/configuration.hpp"
 #include "context.hpp"
 
 namespace Ysera {
 
-class Manager {
+class YSERA_API Manager {
 public:
     Manager(const Configuration& config);
     ~Manager();
@@ -20,7 +21,7 @@ private:
     std::unique_ptr<Window> window_;
 };
 
-extern Configuration g_config;
-extern Context* g_manager;
+YSERA_API extern Configuration g_config;
+YSERA_API extern Context* g_manager;
 
 } // namespace Ysera

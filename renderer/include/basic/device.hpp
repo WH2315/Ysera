@@ -1,10 +1,11 @@
 #pragma once
 
+#include "dllexport.hpp"
 #include <vulkan/vulkan.hpp>
 
 namespace Ysera {
 
-class Device {
+class YSERA_API Device {
 public:
     Device();
     ~Device();

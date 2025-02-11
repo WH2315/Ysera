@@ -1,16 +1,17 @@
 #pragma once
 
+#include "dllexport.hpp"
 #include <GLFW/glfw3.h>
 #include <string>
 
 namespace Ysera {
 
-struct WindowInfo {
+struct YSERA_API WindowInfo {
     std::string title;
     uint32_t width, height;
 };
 
-class Window final {
+class YSERA_API Window final {
 public:
     Window(const WindowInfo& info);
     ~Window();

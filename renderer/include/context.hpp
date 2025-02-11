@@ -2,10 +2,11 @@
 
 #include "basic/device.hpp"
 #include "basic/swapchain.hpp"
+#include <memory>
 
 namespace Ysera {
 
-class Manager;
+class YSERA_API Manager;
 class Context final {
 public:
     ~Context() = default;

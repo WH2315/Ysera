@@ -1,12 +1,14 @@
 #pragma once
 
+#include "dllexport.hpp"
 #include "core/log.hpp"
 #include "core/window.hpp"
 #include <vulkan/vulkan.hpp>
+#include <optional>
 
 namespace Ysera {
 
-struct Configuration {
+struct YSERA_API Configuration {
     WindowInfo window_info;
     std::string app_name;
     std::string engine_name;
