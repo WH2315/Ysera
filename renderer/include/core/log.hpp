@@ -1,10 +1,11 @@
 #pragma once
 
+#include "dllexport.hpp"
 #include <spdlog/spdlog.h>
 
 namespace Ysera {
 
-class Log final {
+class YSERA_API Log final {
 public:
     Log();
     ~Log();
@@ -33,7 +34,7 @@ private:
     std::shared_ptr<spdlog::logger> logger_;
 };
 
-extern Log* g_log;
+YSERA_API extern Log* g_log;
 
 } // namespace Ysera
 
