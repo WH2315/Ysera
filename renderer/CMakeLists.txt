@@ -49,6 +49,7 @@ function(COPYDLL TARGET_NAME PATH)
         TARGET ${TARGET_NAME}
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${PATH}/3rdlibs/spdlog/${POSITION}/spdlogd.dll
         ${PATH}/3rdlibs/glfw/src/${POSITION}/glfw3.dll
         $<$<BOOL:${YSERA_BUILD_SHARED}>:${PATH}/renderer/${POSITION}/renderer-shared.dll>
         $<TARGET_FILE_DIR:${TARGET_NAME}>

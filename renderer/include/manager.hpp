@@ -1,24 +1,24 @@
 #pragma once
 
-#include "dllexport.hpp"
-#include "core/window.hpp"
-#include <memory>
+#include "context.hpp"
 
 namespace Ysera {
 
 class YSERA_API Manager {
 public:
-    Manager(const WindowInfo& info);
+    Manager(const Configuration& config);
     ~Manager();
-
-    bool shouldClose() const { return window_->shouldClose(); }
-    void pollEvents() const { window_->pollEvents(); }
 
     void initializeRenderer();
     void destroyRenderer();
 
+    auto getWindow() const { return window_.get(); }
+
 private:
     std::unique_ptr<Window> window_;
 };
+
+YSERA_API extern Configuration g_config;
+YSERA_API extern Context* g_manager;
 
 } // namespace Ysera
