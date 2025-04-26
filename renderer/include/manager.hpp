@@ -1,5 +1,6 @@
 #pragma once
 
+#include "base/configuration.hpp"
 #include "context.hpp"
 
 namespace Ysera {

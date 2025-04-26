@@ -1,6 +1,8 @@
 #pragma once
 
-#include "base/configuration.hpp"
+#include "dllexport.hpp"
+#include <vulkan/vulkan.hpp>
+#include <memory>
 
 namespace Ysera {
 
@@ -15,6 +17,14 @@ public:
 
     void initialize(const Manager& manager);
     void destroy();
+
+public:
+    vk::Instance instance;
+    vk::SurfaceKHR surface;
+
+private:
+    void createInstance();
+    void createSurface(const Manager& manager);
 
 private:
     Context() = default;

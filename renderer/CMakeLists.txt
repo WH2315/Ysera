@@ -2,8 +2,30 @@ project(renderer)
 
 option(YSERA_BUILD_SHARED "build shared library" ON)
 
-file(GLOB_RECURSE sources "src/*.cpp")
-file(GLOB_RECURSE headers "include/*.hpp")
+function(organize_files directory)
+    file(GLOB_RECURSE files ${directory}/*)
+
+    foreach(file ${files})
+        file(RELATIVE_PATH path ${PROJECT_SOURCE_DIR}/${directory} ${file})
+        get_filename_component(subdirectory ${path} DIRECTORY)
+
+        if(subdirectory)
+            set(group "${directory}/${subdirectory}")
+        else()
+            set(group "${directory}")
+        endif()
+
+        source_group(${group} FILES ${file})
+    endforeach(file)
+endfunction()
+
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    organize_files("src")
+    organize_files("include")
+endif()
+
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS "src/*.cpp")
+file(GLOB_RECURSE headers CONFIGURE_DEPENDS "include/*.hpp")
 
 macro(target_library TARGET_NAME)
     target_sources(${TARGET_NAME} PRIVATE ${sources} ${headers})

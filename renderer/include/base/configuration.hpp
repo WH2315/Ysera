@@ -9,6 +9,10 @@ namespace Ysera {
 struct YSERA_API Configuration {
     WindowInfo window_info;
 
+    std::string app_name;
+    std::string engine_name;
+    bool debug = false;
+
     void resetWindowSize(uint32_t width, uint32_t height) {
         window_info.width = width;
         window_info.height = height;
