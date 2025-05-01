@@ -1,12 +1,10 @@
 #pragma once
 
-#include "dllexport.hpp"
-#include <vulkan/vulkan.hpp>
-#include <memory>
+#include "manager.hpp"
+#include "basic/device.hpp"
 
 namespace Ysera {
 
-class YSERA_API Manager;
 class YSERA_API Context final {
 public:
     ~Context() = default;
@@ -21,6 +19,7 @@ public:
 public:
     vk::Instance instance;
     vk::SurfaceKHR surface;
+    std::unique_ptr<Device> device;
 
 private:
     void createInstance();

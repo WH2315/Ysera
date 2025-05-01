@@ -1,7 +1,6 @@
 #pragma once
 
 #include "base/configuration.hpp"
-#include "context.hpp"
 
 namespace Ysera {
 
@@ -19,7 +18,8 @@ private:
     std::unique_ptr<Window> window_;
 };
 
-YSERA_API extern Configuration g_config;
-YSERA_API extern Context* g_manager;
+extern Configuration g_config;
+class Context;
+extern Context* g_manager;
 
 } // namespace Ysera

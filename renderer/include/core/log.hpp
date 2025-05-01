@@ -34,7 +34,7 @@ private:
     std::shared_ptr<spdlog::logger> logger_;
 };
 
-YSERA_API extern Log* g_log;
+extern YSERA_API Log* g_log;
 
 } // namespace Ysera
 

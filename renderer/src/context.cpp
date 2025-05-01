@@ -1,5 +1,4 @@
 #include "context.hpp"
-#include "manager.hpp"
 #include <map>
 
 namespace Ysera {
@@ -17,10 +16,12 @@ void Context::quit() { instance_.reset(); }
 void Context::initialize(const Manager& manager) {
     createInstance();
     createSurface(manager);
+    device = std::make_unique<Device>();
     LOGI("Vulkan Context Initialized!")
 }
 
 void Context::destroy() {
+    device.reset();
     instance.destroySurfaceKHR(surface);
     instance.destroy();
     LOGI("Vulkan Context Destroyed!")
