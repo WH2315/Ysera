@@ -17,10 +17,12 @@ void Context::initialize(const Manager& manager) {
     createInstance();
     createSurface(manager);
     device = std::make_unique<Device>();
+    swapchain = std::make_unique<Swapchain>();
     LOGI("Vulkan Context Initialized!")
 }
 
 void Context::destroy() {
+    swapchain.reset();
     device.reset();
     instance.destroySurfaceKHR(surface);
     instance.destroy();

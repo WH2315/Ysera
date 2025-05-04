@@ -3,6 +3,8 @@
 #include "dllexport.hpp"
 #include "core/log.hpp"
 #include "core/window.hpp"
+#include <vulkan/vulkan.hpp>
+#include <optional>
 
 namespace Ysera {
 
@@ -12,6 +14,10 @@ struct YSERA_API Configuration {
     std::string app_name;
     std::string engine_name;
     bool debug = false;
+
+    std::optional<vk::SurfaceFormatKHR> desired_format = std::nullopt;
+    std::optional<vk::PresentModeKHR> desired_mode = std::nullopt;
+    bool vsync = false;
 
     void resetWindowSize(uint32_t width, uint32_t height) {
         window_info.width = width;
